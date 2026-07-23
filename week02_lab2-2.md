@@ -461,8 +461,23 @@ flutter run
 
 **บันทึกรูปผลการทดลอง**
 ```
-บันทึกรูปที่นี่
+.start
 ```
+<img width="1285" height="932" alt="image" src="https://github.com/user-attachments/assets/081032ea-2a71-44f4-8aaa-ac76a169ab4c" />
+```
+.end
+```
+<img width="1297" height="806" alt="image" src="https://github.com/user-attachments/assets/a3e7757b-9e47-4c03-8bf4-76c35ff1ad89" />
+```
+.spaceBetween
+```
+<img width="1295" height="817" alt="image" src="https://github.com/user-attachments/assets/a4410b9c-34ae-4609-a216-b7507eff3fa7" />
+```
+.spaceEvenly
+```
+<img width="1290" height="792" alt="image" src="https://github.com/user-attachments/assets/44ca8ef1-3251-4457-97b2-9c61838c7869" />
+
+
 **✏️ ทดลองแก้ไข D:** ใน Row เพิ่ม Container D สีม่วง ขนาด 80×80 ต่อจาก C
 **บันทึกรูปผลการทดลอง**
 ```
