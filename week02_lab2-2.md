@@ -610,7 +610,8 @@ class InfoCard extends StatelessWidget {
 
 **บันทึกรูปผลการทดลอง**
 
-<img width="1297" height="857" alt="image" src="https://github.com/user-attachments/assets/613e4766-84ae-4ccf-bb98-e6dbddbe6d79" />
+![Uploading image.png…]()
+
 
 ---
 
