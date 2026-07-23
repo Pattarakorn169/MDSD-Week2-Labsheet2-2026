@@ -1446,9 +1446,14 @@ class _GreetingFormState extends State<GreetingForm> {
 **ขั้นตอนที่ 3** ทดสอบทุก Tab และทุก Feature
 
 **บันทึกรูปผลการทดลอง**
-```
-บันทึกรูปที่นี่
-```
+
+<img width="1287" height="985" alt="image" src="https://github.com/user-attachments/assets/458c8074-4f97-442e-a2f7-e83d8a104527" />
+
+<img width="1278" height="977" alt="image" src="https://github.com/user-attachments/assets/584cc3f7-6d1d-497e-a2a0-21d8390363f9" />
+
+<img width="1292" height="985" alt="image" src="https://github.com/user-attachments/assets/63f9d801-b227-46d2-935f-eef6c9ac617a" />
+
+
 ---
 
 ### การทดลองที่ 8 — Hot Reload vs Hot Restart
@@ -1472,20 +1477,21 @@ colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
 
 | | หลัง Hot Reload |
 |--|--|
-| สี Theme | |
-| ค่า Counter | |
+| สี Theme | เปลี่ยนเป็นสีเขียวอมฟ้า (Teal)|
+| ค่า Counter | ไม่ถูกตั้งค่า |
 
 **ขั้นตอนที่ 5** กด **Hot Restart** (พิมพ์ `R` ใน Terminal หรือกด 🔄)
 
 | | หลัง Hot Restart |
 |--|--|
-| สี Theme | |
-| ค่า Counter | |
+| สี Theme | เปลี่ยนเป็นสีเขียวอมฟ้า (Teal) |
+| ค่า Counter | กลับมาเป็น 0 |
 
 **ขั้นตอนที่ 6** อธิบายผลลัพธ์:
 
-> Hot Reload: สี __________ Counter __________ เพราะ __________
-> Hot Restart: สี __________ Counter __________ เพราะ __________
+Hot Reload: สี เปลี่ยนตามโค้ดใหม่ Counter ไม่ถูกรีเซ็ต เพราะ Flutter โหลดเฉพาะ UI ใหม่และรักษา State เดิมของแอปไว้
+
+Hot Restart: สี เปลี่ยนเป็นสีเขียวอมฟ้า (Teal) Counter กลับมาเป็น 0 เพราะ Flutter เริ่มแอปใหม่ทั้งหมด ทำลาย State เดิมและสร้าง Widget ใหม่ตั้งแต่ต้น
 
 ---
 
@@ -1507,17 +1513,35 @@ colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
 ### คำถามท้ายใบงาน
 
 **ข้อ 1** ทำไม Flutter ถึงเลือกวาด UI ด้วย Engine ของตัวเองแทนการใช้ Native Component? มีข้อดีและข้อเสียอย่างไร?
-
+```
+Flutter ใช้ Engine ของตัวเองเพื่อให้ UI เหมือนกันทุก Platform และควบคุมการแสดงผลได้ดี
+ข้อดีคือทำงานเร็วและ UI สม่ำเสมอ ข้อเสียคือขนาดแอปใหญ่ขึ้นและบางอย่างต้องเชื่อม Native เพิ่ม
+```
 **ข้อ 2** อธิบายความสัมพันธ์ของ Widget Tree, Element Tree และ RenderObject Tree และเหตุผลที่ต้องมีทั้ง 3 ส่วน
-
+```
+Widget Tree ใช้กำหนดโครงสร้าง UI, Element Tree จัดการ State และความสัมพันธ์ของ Widget, RenderObject Tree ใช้วาด UI จริง
+ทั้ง 3 ส่วนทำงานร่วมกันเพื่อให้ Flutter สร้างและอัปเดตหน้าจอได้มีประสิทธิภาพ
+```
 **ข้อ 3** อธิบายโครงสร้าง Widget Tree และความสัมพันธ์ระหว่าง Parent-Child Widget 
-
+```
+Widget Tree เป็นโครงสร้างแบบ Parent-Child โดย Parent เป็นตัวควบคุมพื้นที่และจัดการ Child Widget ที่อยู่ภายใน
+เช่น Column เป็น Parent และ Text, Button เป็น Child
+```
 **ข้อ 4** จากการทดลองที่ 4 ข้อ F (ลบ setState ออก) ผลที่เกิดขึ้นคืออะไร และอธิบายเหตุผลเชิงเทคนิคว่าทำไมจึงเกิดผลนั้น
-
+```
+เมื่อลบ setState() ค่า _count เปลี่ยน แต่หน้าจอไม่อัปเดต เพราะ Flutter ไม่รู้ว่าข้อมูลเปลี่ยน
+setState() มีหน้าที่แจ้งให้ Flutter rebuild UI ใหม่
+```
 **ข้อ 5** เมื่อออกแบบ Flutter App ที่มี Widget หลายตัว จะตัดสินใจอย่างไรว่า Widget ไหนควรเป็น Stateless และ Widget ไหนควรเป็น Stateful? ยกตัวอย่างจากใบงานนี้
-
+```
+ใช้ StatelessWidget เมื่อข้อมูลไม่เปลี่ยน เช่น InfoCard ที่รับค่าผ่าน Parameter
+ใช้ StatefulWidget เมื่อข้อมูลเปลี่ยนระหว่างใช้งาน เช่น CounterSection และ ClockWidget
+```
 **ข้อ 6** เหตุใดจึงต้องเรียก `dispose()` และยกเลิก Timer ใน `ClockWidget`? หากไม่ทำจะเกิดอะไรขึ้นในระยะยาว?
-
+```
+ต้องใช้ dispose() เพื่อหยุด Timer และคืนทรัพยากรเมื่อ Widget ถูกทำลาย
+ถ้าไม่ยกเลิกอาจเกิด Memory Leak และ Error จากการเรียก setState() หลัง Widget ถูกปิดแล้ว
+```
 ---
 
 ## ข้อผิดพลาดที่พบบ่อยใน Flutter
