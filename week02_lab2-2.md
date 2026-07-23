@@ -899,6 +899,8 @@ class _GreetingFormState extends State<GreetingForm> {
 
 **✏️ ทดลองแก้ไข G:** ทดลองกดปุ่มโดยไม่กรอกชื่อ สังเกตว่า Error Message ปรากฏ และกดปุ่ม Reset (clear field) แล้วสังเกตว่า Error หายไป
 
+<img width="1282" height="377" alt="image" src="https://github.com/user-attachments/assets/7de4d3fd-36ca-4f5c-8df8-ecae4c62b8d1" />
+
 ---
 
 ### การทดลองที่ 6 — Lifecycle: initState และ dispose
@@ -1010,11 +1012,15 @@ import 'dart:async';
 
 **ขั้นตอนที่ 4** บันทึกและดูผล — เวลาควรอัปเดตทุกวินาที
 **บันทึกรูปผลการทดลอง**
-```
-บันทึกรูปที่นี่
-```
+
+<img width="1293" height="962" alt="image" src="https://github.com/user-attachments/assets/6fe1e5a9-5273-4053-8561-7848e284b759" />
+
+<img width="1290" height="916" alt="image" src="https://github.com/user-attachments/assets/e6e5aced-2085-4ac2-9ac2-9ffa0536e3a3" />
 
 **✏️ ทดลองแก้ไข H:** ลองลบ `_timer?.cancel()` ใน `dispose()` แล้วสังเกต — ใน Debug Console อาจเห็น Warning "setState() called after dispose()" หลังจากออกจากหน้า แล้วใส่กลับคืน
+
+<img width="1287" height="942" alt="image" src="https://github.com/user-attachments/assets/7069d7ef-b24b-4771-95fd-6d751d460d06" />
+
 
 ---
 
